@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../components/provider/AuthProvider";
 
+
 const Register = () => {
 
   const {creatUser} = useContext(AuthContext)
@@ -12,6 +13,7 @@ const Register = () => {
    creatUser(email,password)
     .then((result)=>{
        console.log(result)
+       
     })
     .catch(error=>{
         console.log(error.message)

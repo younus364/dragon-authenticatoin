@@ -6,7 +6,8 @@ export const AuthContext = createContext(null)
 const AuthProvider = ({ children }) => {
 
     const [user, SetUser] = useState(null)
-    console.log(user)
+    const [loading,setLoading] = useState(true)
+    console.log(loading,user)
     const creatUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
 
@@ -22,12 +23,10 @@ const AuthProvider = ({ children }) => {
     }
     useEffect(() => {
         const unsubscrib = onAuthStateChanged(auth, (currentUser) => {
-            if (currentUser) {
+          
                 SetUser(currentUser)
-            }
-            else {
-                console.log("User Not sign ")
-            }
+                setLoading(false)
+          
         })
         return () => {
 
@@ -39,6 +38,7 @@ const AuthProvider = ({ children }) => {
         creatUser,
         loginUser,
         signOutUser,
+        loading,
         
     }
     return (
