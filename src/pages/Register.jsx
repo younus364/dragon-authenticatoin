@@ -1,18 +1,28 @@
 import { useContext } from "react";
 import { AuthContext } from "../components/provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 
 const Register = () => {
 
-  const {creatUser} = useContext(AuthContext)
+
+  //  const navigate = useNavigate()
+
+  const {creatUser,userUpdateProfile} = useContext(AuthContext)
   const handleRegister =e=>{
     e.preventDefault()
+
+    const name = e.target.name.value;
+    const photoUrl = e.target.photoUrl.value;
     const email = e.target.email.value
-   const password = e.target.password.value
+   const password = e.target.password.value;
+   
    console.log(email,password)
    creatUser(email,password)
     .then((result)=>{
        console.log(result)
+       userUpdateProfile({displayName:name,photoURL:photoUrl})
+      
        
     })
     .catch(error=>{
@@ -33,13 +43,17 @@ const Register = () => {
                     
                       <form onSubmit={handleRegister}>
                         <fieldset className="fieldset">
+                        <label className="label">Name</label>
+                      <input name="name" type="text" className="input" placeholder="Name" />
+                        <label className="label">Photo Url</label>
+                      <input name="photoUrl" type="text" className="input" placeholder="Photo Url" />
                         <label className="label">Email</label>
                       <input name="email" type="email" className="input" placeholder="Email" />
                       <label className="label">Password</label>
                       <input name="password" type="password" className="input" placeholder="Password" />
                       <div><a className="link link-hover">Forgot password?</a></div>
                       <button className="btn btn-neutral mt-4">Register</button>
-                     <p>Already Have an account</p>
+                     <p>Already Have an account<Link to='/auth/login' className="font-bold">Login</Link></p>
                     </fieldset>
                       </form>
                   </div>

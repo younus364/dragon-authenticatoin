@@ -10,7 +10,8 @@ const Navbar = () => {
     const handleSignOut =()=>{
       signOutUser()
     }
-
+    
+   
 
 
 
@@ -24,7 +25,10 @@ const Navbar = () => {
       </div>
       <div className="login flex gap-2 items-center">
         <div className=" ">
-          <img src={userIcon} alt="" />
+         {
+          user && user?.email ? <div className="py-3"><img className="w-16  rounded-full" src={user?.photoURL} alt="" /></div> : <img src={userIcon} alt="" />
+         }
+          
         </div>
         {
           user ?
