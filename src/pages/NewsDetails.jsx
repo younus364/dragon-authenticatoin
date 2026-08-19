@@ -6,7 +6,7 @@ const NewsDetails = () => {
     const data = useLoaderData()
     const newsData =data.data[0] 
     const {details,title,total_view,image_url,category_id} = newsData;
-    console.log(newsData)
+    // console.log(newsData)
     return (
         <div>
             <header>

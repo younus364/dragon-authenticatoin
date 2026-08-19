@@ -8,7 +8,7 @@ const Login = () => {
   const loction = useLocation()
   const navigate = useNavigate()
 const [error,setError] = useState({})
-console.log(loction)
+// console.log(loction)
 
 
 
@@ -16,14 +16,14 @@ console.log(loction)
     e.preventDefault()
    const email = e.target.email.value
    const password = e.target.password.value
-   console.log(email)
+  //  console.log(email)
    loginUser(email,password)
     .then(()=>{
         alert("User Succesfully Login")
         navigate(loction?.state ? loction.state : "/")
     })
     .catch(erro=>{
-        console.log(error.message)
+        // console.log(error.message)
         setError({...error,login:erro.code})
     })
   }

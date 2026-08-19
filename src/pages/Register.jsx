@@ -17,16 +17,16 @@ const Register = () => {
     const email = e.target.email.value
    const password = e.target.password.value;
    
-   console.log(email,password)
+  //  console.log(email,password)
    creatUser(email,password)
     .then((result)=>{
-       console.log(result)
+      //  console.log(result)
        userUpdateProfile({displayName:name,photoURL:photoUrl})
       
        
     })
     .catch(error=>{
-        console.log(error.message)
+        // console.log(error.message)
     })
    
   }
